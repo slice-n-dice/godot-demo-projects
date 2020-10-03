@@ -12,6 +12,8 @@ var spectrum
 
 func _draw():
 	#warning-ignore:integer_division
+	
+	
 	var w = WIDTH / VU_COUNT
 	var prev_hz = 0
 	for i in range(1, VU_COUNT+1):
@@ -29,3 +31,11 @@ func _process(_delta):
 
 func _ready():
 	spectrum = AudioServer.get_bus_effect_instance(0,0)
+	var label_node = get_node("Label")
+	var audio_device_list = AudioServer.capture_get_device_list()
+	for i in range(0, audio_device_list.size()):
+		label_node.text = label_node.text + " " + audio_device_list[i]
+	#if 1 == 1: # No microphone detected
+	#	label_node.text = "I can't hear you..."
+	#else: # Mic is plugged in
+	#	label_node.text = "I'm listening...'"

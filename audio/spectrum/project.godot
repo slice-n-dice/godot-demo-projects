@@ -20,6 +20,10 @@ config/description="This is a demo showing how a spectrum analyzer can be built 
 run/main_scene="res://show_spectrum.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+enable_audio_input=true
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
